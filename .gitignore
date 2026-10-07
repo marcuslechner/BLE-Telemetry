@@ -1,0 +1,30 @@
+# OS and editors
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*~
+
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
+
+# ESP-IDF
+firmware/esp32/build/
+firmware/esp32/sdkconfig
+firmware/esp32/sdkconfig.old
+firmware/esp32/managed_components/
+
+# Xcode and Swift
+DerivedData/
+.build/
+*.xcuserstate
+xcuserdata/
+*.moved-aside
+*.xccheckout
+*.xcscmblueprint
+
+# Logs
+*.log
