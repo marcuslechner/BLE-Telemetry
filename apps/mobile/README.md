@@ -1,12 +1,13 @@
-# iOS application
+# Flutter Android application
 
-This directory will contain the Swift/SwiftUI companion application.
+This directory will contain the Flutter companion application targeting
+Android.
 
-Create the app in Xcode with:
+After installing Flutter and the Android SDK, generate the project here:
 
-- Product name: `BLETelemetry`
-- Interface: SwiftUI
-- Language: Swift
+```sh
+flutter create --platforms=android --org ca.lechnology --project-name ble_telemetry .
+```
 
 The initial app should scan for the BLE-Telemetry gateway, connect, display
 connection diagnostics, and decode the first battery state-of-charge value.

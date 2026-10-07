@@ -17,14 +17,20 @@ firmware/esp32/sdkconfig
 firmware/esp32/sdkconfig.old
 firmware/esp32/managed_components/
 
-# Xcode and Swift
-DerivedData/
-.build/
-*.xcuserstate
-xcuserdata/
-*.moved-aside
-*.xccheckout
-*.xcscmblueprint
+# Flutter and Dart
+apps/mobile/.dart_tool/
+apps/mobile/.flutter-plugins
+apps/mobile/.flutter-plugins-dependencies
+apps/mobile/.packages
+apps/mobile/build/
+apps/mobile/coverage/
+
+# Android tooling and local machine configuration
+apps/mobile/android/.gradle/
+apps/mobile/android/local.properties
+apps/mobile/android/key.properties
+*.jks
+*.keystore
 
 # Logs
 *.log

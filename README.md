@@ -1,10 +1,10 @@
 # BLE-Telemetry
 
 BLE-Telemetry contains the ESP32 Bluetooth Low Energy gateway firmware and
-the Apple companion application for the BD robot.
+the Flutter Android companion application for the BD robot.
 
 ```text
-STM32N6 Cerebellum <-- UART / ESP Link --> ESP32 <-- BLE --> iPhone or iPad
+STM32N6 Cerebellum <-- UART / ESP Link --> ESP32 <-- BLE --> Android device
 ```
 
 The ESP32 receives robot telemetry from the Cerebellum, exposes it over BLE,
@@ -13,7 +13,7 @@ and forwards app requests back to the STM32N6.
 ## Repository layout
 
 - `firmware/esp32/` — ESP-IDF firmware.
-- `apps/ios/` — Swift/SwiftUI companion application.
+- `apps/mobile/` — Flutter companion application targeting Android.
 - `protocol/` — wire protocols, assigned identifiers, and interoperability
   test vectors shared by the firmware and app.
 
@@ -21,7 +21,7 @@ and forwards app requests back to the STM32N6.
 
 The repository has its initial project structure. The ESP-IDF application
 builds to a minimal startup log once ESP-IDF is installed. BLE services,
-UART reception, and the iOS project are not implemented yet.
+UART reception, and the Flutter project are not implemented yet.
 
 The current STM32-to-ESP32 packet definition is in
 [`protocol/esp_link_protocol.md`](protocol/esp_link_protocol.md).
@@ -39,11 +39,18 @@ idf.py build
 
 Do not choose a target until the ESP32 board/module has been selected.
 
-## iOS application
+## Android application
 
-Create the Xcode SwiftUI application in `apps/ios/` using `BLETelemetry` as
-the product name. The Xcode project should be committed, while user-specific
-workspace state and build products are ignored.
+After installing Flutter with Android tooling, generate the application in
+`apps/mobile/`:
+
+```sh
+cd apps/mobile
+flutter create --platforms=android --org ca.lechnology --project-name ble_telemetry .
+```
+
+Commit the generated Flutter project, including `pubspec.lock`; local SDK
+paths, tool caches, and build products are ignored.
 
 ## Protocol ownership
 
