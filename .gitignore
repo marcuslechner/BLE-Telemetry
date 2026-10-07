@@ -27,6 +27,7 @@ apps/mobile/coverage/
 
 # Android tooling and local machine configuration
 apps/mobile/android/.gradle/
+apps/mobile/android/build/
 apps/mobile/android/local.properties
 apps/mobile/android/key.properties
 *.jks
