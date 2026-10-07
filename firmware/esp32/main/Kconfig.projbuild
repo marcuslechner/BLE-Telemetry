@@ -1,0 +1,24 @@
+menu "BLE-Telemetry gateway"
+
+    config BLE_TELEMETRY_UART_BAUD_RATE
+        int "ESP Link UART baud rate"
+        range 1200 5000000
+        default 115200
+        help
+            Baud rate for the UART link to the STM32N6.
+
+    config BLE_TELEMETRY_UART_TX_GPIO
+        int "ESP Link UART TX GPIO"
+        range 0 48
+        default 17
+        help
+            ESP32-S3 output connected to STM32N6 PD9 / USART3_RX.
+
+    config BLE_TELEMETRY_UART_RX_GPIO
+        int "ESP Link UART RX GPIO"
+        range 0 48
+        default 18
+        help
+            ESP32-S3 input connected to STM32N6 PD8 / USART3_TX.
+
+endmenu

@@ -19,34 +19,34 @@ and forwards app requests back to the STM32N6.
 
 ## Current status
 
-The repository has its initial project structure. The ESP-IDF application
-builds to a minimal startup log once ESP-IDF is installed. BLE services,
-UART reception, and the Flutter project are not implemented yet.
+The ESP32-S3 firmware receives and validates ESP Link UART frames and reports
+the implemented battery message. The Flutter Android app scans for the standard
+BLE Battery Service and displays its Battery Level value. The ESP32 GATT server
+is the remaining link needed for an end-to-end reading.
 
 The current STM32-to-ESP32 packet definition is in
 [`protocol/esp_link_protocol.md`](protocol/esp_link_protocol.md).
 
 ## ESP32 firmware
 
-Install and activate Espressif ESP-IDF, then select the exact chip used by the
-board and build:
+Install and activate Espressif ESP-IDF v6.1, then select the ESP32-S3 target
+and build:
 
 ```sh
 cd firmware/esp32
-idf.py set-target <esp32-target>
+idf.py set-target esp32s3
 idf.py build
 ```
 
-Do not choose a target until the ESP32 board/module has been selected.
-
 ## Android application
 
-After installing Flutter with Android tooling, generate the application in
+After installing Flutter with Android tooling, run the application from
 `apps/mobile/`:
 
 ```sh
 cd apps/mobile
-flutter create --platforms=android --org ca.lechnology --project-name ble_telemetry .
+flutter pub get
+flutter run
 ```
 
 Commit the generated Flutter project, including `pubspec.lock`; local SDK

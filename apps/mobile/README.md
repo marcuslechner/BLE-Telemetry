@@ -1,15 +1,24 @@
 # Flutter Android application
 
-This directory will contain the Flutter companion application targeting
-Android.
+This directory contains the Flutter companion application targeting Android.
+The first screen automatically scans for the robot gateway and shows its live
+battery state of charge.
 
-After installing Flutter and the Android SDK, generate the project here:
+Run it on a physical Android device with Bluetooth enabled:
 
 ```sh
-flutter create --platforms=android --org ca.lechnology --project-name ble_telemetry .
+flutter pub get
+flutter run
 ```
 
-The initial app should scan for the BLE-Telemetry gateway, connect, display
-connection diagnostics, and decode the first battery state-of-charge value.
-Define the BLE GATT contract under `protocol/` before implementing service and
-characteristic UUIDs in either the app or firmware.
+The app requests the Android nearby-device permission, scans for the standard
+BLE Battery Service (`0x180F`), connects to the first advertising gateway, and
+reads/subscribes to Battery Level (`0x2A19`). See
+[`../../protocol/ble_gatt_protocol.md`](../../protocol/ble_gatt_protocol.md).
+
+Run the checks with:
+
+```sh
+flutter analyze
+flutter test
+```
